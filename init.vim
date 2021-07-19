@@ -301,6 +301,10 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 " fish
 Plug 'dag/vim-fish', {'for': 'fish'}
 
+" gist.github.com
+Plug 'mattn/webapi-vim'
+Plug 'mattn/vim-gist'
+
 " Other useful utilities
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/goyo.vim'
@@ -473,6 +477,14 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 " === fish
 " ===
 au BufNewFile,BufRead fish_funced set ft=fish
+
+" ===
+" === Gist
+" ===
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_post_private = 1
+let g:gist_show_privates = 1
 
 " ===
 " === Necessary Commands to Execute
