@@ -277,6 +277,8 @@ Plug 'voldikss/vim-floaterm'
 
 " Other visual enhancement
 Plug 'mhinz/vim-startify'
+" displaying thin vertical lines
+" Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Rainbow parentheses
 Plug 'luochen1990/rainbow', { 'for': 'clojure' }
@@ -466,6 +468,11 @@ let g:startify_lists = [
      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
      \ { 'type': 'commands',  'header': ['   Commands']       },
      \ ]
+
+" ===
+" === indent-blankline
+" ===
+" let g:indent_blankline_char = '┊'
 
 " ===
 " === tsx
