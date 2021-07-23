@@ -293,10 +293,6 @@ Plug 'wakatime/vim-wakatime'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 
-" tsx
-Plug 'leafgarland/typescript-vim', {'for': 'tsx'}
-Plug 'peitalin/vim-jsx-typescript', {'for': 'tsx'}
-
 " CoffeeScript
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
