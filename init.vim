@@ -299,6 +299,9 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 " fish
 Plug 'dag/vim-fish', {'for': 'fish'}
 
+" nginx
+Plug 'chr4/nginx.vim', {'for': ['nginx', 'conf']}
+
 " gist.github.com
 Plug 'mattn/webapi-vim'
 Plug 'mattn/vim-gist'
@@ -475,6 +478,11 @@ let g:startify_lists = [
 " ===
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
+" ===
+" === nginx
+" ===
+autocmd BufRead *.conf.template set filetype=nginx
 
 " ===
 " === fish
