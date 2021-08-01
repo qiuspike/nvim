@@ -156,8 +156,8 @@ inoremap <C-d> <C-o>daw
 noremap <LEADER><CR> :nohlsearch<CR>
 
 " line number
-" noremap <C-N><C-N> :set invnumber<CR>
-" inoremap <C-N><C-N> <C-O>:set invnumber<CR>
+noremap <C-L><C-L> :set invnumber<CR>
+inoremap <C-L><C-L> <C-O>:set invnumber<CR>
 
 " Disabling the r key
 noremap r <nop>
