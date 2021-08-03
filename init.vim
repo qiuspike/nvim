@@ -9,10 +9,6 @@
 set clipboard=unnamed
 " let the color compatiable to terminal
 let &t_ut=' '
-" automatic change working dir at now edit file's path
-" default, vim working dir is always the start dir
-" set autochdir
-" autocmd BufEnter * silent! lcd %:p:h
 
 " enable mouse scroll
 " set mouse=nv
@@ -96,10 +92,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " ===
 " === Terminal Behavior
 " ===
-"
 let g:neoterm_autoscroll = 1
-"
-" autocmd TermOpen term://* startinsert
 let g:terminal_color_0  = '#000000'
 let g:terminal_color_1  = '#FF5555'
 let g:terminal_color_2  = '#50FA7B'
@@ -121,9 +114,6 @@ let g:terminal_color_14 = '#9AEDFE'
 " ===
 " Set <LEADER>
 let mapleader=" "
-
-" use q to exit help window
-" autocmd FileType help noremap <buffer> q :q<cr>
 
 " Save & quit
 map S :w<CR>
@@ -244,8 +234,16 @@ noremap <LEADER>/ :term<CR>
 :tnoremap <ESC> <C-\><C-n>
 " No line number
 :autocmd TermOpen * setlocal nonumber
-" Term title
-" :autocmd TermOpen * setlocal statusline=%{b:term_title}
+
+" ===
+" === Autocmd
+" ===
+augroup EditVim
+  autocmd!
+  autocmd BufNewFile,BufRead fish_funced set ft=fish
+  autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+  autocmd FileType help noremap <buffer> q :q<cr>
+augroup END
 
 " =====================
 " === Plugins Setup ===
@@ -429,7 +427,6 @@ nnoremap <LEADER>S :History<CR>
 nnoremap <LEADER>d :Commands<CR>
 nnoremap <LEADER>m :Gblame<CR>
 
-
 " ===
 " === coc.fzf
 " ===
@@ -446,22 +443,6 @@ let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 " let g:NERDTrimTrailingWhitespace = 1
-
-" ===
-" === tsx
-" ===
-" set filetypes as typescript.tsx
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-
-" ===
-" === nginx
-" ===
-autocmd BufRead *.conf.template set filetype=nginx
-
-" ===
-" === fish
-" ===
-au BufNewFile,BufRead fish_funced set ft=fish
 
 " ===
 " === Gist
