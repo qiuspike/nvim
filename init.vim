@@ -276,7 +276,6 @@ Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'voldikss/vim-floaterm'
 
 " Other visual enhancement
-Plug 'mhinz/vim-startify'
 " displaying thin vertical lines
 " Plug 'lukas-reineke/indent-blankline.nvim'
 
@@ -451,15 +450,6 @@ let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 " let g:NERDTrimTrailingWhitespace = 1
-
-" ===
-" === Startify
-" ===
-let g:startify_lists = [
-     \ { 'type': 'files',     'header': ['   MRU']            },
-     \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-     \ { 'type': 'commands',  'header': ['   Commands']       },
-     \ ]
 
 " ===
 " === indent-blankline
