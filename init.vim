@@ -308,7 +308,6 @@ Plug 'mattn/vim-gist'
 
 " Other useful utilities
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 Plug 'scrooloose/nerdcommenter' " in <LEADER>cc to comment a line; <LEADER>ci
@@ -442,13 +441,6 @@ nnoremap <LEADER>m :Gblame<CR>
 nnoremap <silent> <LEADER>;       :<C-u>CocFzfList<CR>
 nnoremap <silent> <LEADER>e       :<C-u>CocFzfList extensions<CR>
 nnoremap <silent> <LEADER>o       :<C-u>CocFzfList outline<CR>
-
-" ===
-" === Goyo
-" ===
-map <LEADER>y :Goyo<CR>
-let g:goyo_width = 100
-let g:goyo_linenr = 0
 
 " ===
 " === nerdcommenter
