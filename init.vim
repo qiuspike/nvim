@@ -275,10 +275,6 @@ Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 " Terminal
 Plug 'voldikss/vim-floaterm'
 
-" Other visual enhancement
-" displaying thin vertical lines
-" Plug 'lukas-reineke/indent-blankline.nvim'
-
 " Rainbow parentheses
 Plug 'luochen1990/rainbow', { 'for': 'clojure' }
 
@@ -450,11 +446,6 @@ let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 " let g:NERDTrimTrailingWhitespace = 1
-
-" ===
-" === indent-blankline
-" ===
-" let g:indent_blankline_char = '┊'
 
 " ===
 " === tsx
