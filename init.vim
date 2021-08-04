@@ -237,7 +237,6 @@ Plug 'doums/darcula'
 
 " status bar
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 
 " coc and fzf
