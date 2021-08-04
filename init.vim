@@ -86,8 +86,6 @@ set incsearch
 let g:python3_host_prog='/usr/local/bin/python3'
 let g:python_host_prog='/usr/local/bin/python'
 
-" open the fiel cursor at hte last edited position
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " ===
 " === Terminal Behavior
@@ -228,8 +226,6 @@ endfor
 " ===
 " === Terminal
 " ===
-" Opening a terminal window
-noremap <LEADER>/ :term<CR>
 " Using esc in term mode
 :tnoremap <ESC> <C-\><C-n>
 
@@ -238,10 +234,12 @@ noremap <LEADER>/ :term<CR>
 " ===
 augroup EditVim
   autocmd!
-  autocmd TermOpen * setlocal nonumber
   autocmd BufNewFile,BufRead fish_funced set ft=fish
   autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+  " using q to quit help doc
   autocmd FileType help noremap <buffer> q :q<cr>
+  " open the fiel cursor at hte last edited position
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 augroup END
 
 " =====================
@@ -255,54 +253,42 @@ augroup END
 "vim-plug begin
 call plug#begin('~/.config/nvim/plugged')
 
-" Status bar
+" color theme
+Plug 'doums/darcula'
+
+" status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 
-" File navigation
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-
-" Coc and FZF
+" coc and fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 
-" Terminal
-Plug 'voldikss/vim-floaterm', { 'on': 'FloatermToggle' }
-
-" Rainbow parentheses
-Plug 'luochen1990/rainbow', { 'for': 'clojure' }
-
-" editorconfig
+" editor and git
 Plug 'editorconfig/editorconfig-vim'
-
-" Git
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
 
-" CoffeeScript
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-
-" fish
-Plug 'dag/vim-fish', {'for': 'fish'}
-
-" nginx
-Plug 'chr4/nginx.vim', {'for': ['nginx', 'conf']}
-
-" gist.github.com
-Plug 'mattn/webapi-vim'
-Plug 'mattn/vim-gist'
-
-" Other useful utilities
+" useful utilities
 Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to change 'word' to `word`
-Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
+Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip it
 Plug 'scrooloose/nerdcommenter' " in <LEADER>cc to comment a line; <LEADER>ci
 
-" Color theme
-Plug 'doums/darcula'
+" on demand utilities
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'voldikss/vim-floaterm', { 'on': 'FloatermToggle' }
+
+" gist.github.com
+Plug 'mattn/webapi-vim', { 'on': 'Gist' }
+Plug 'mattn/vim-gist', { 'on': 'Gist' }
+
+" language specific
+Plug 'luochen1990/rainbow', { 'for': 'clojure' }
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'dag/vim-fish', {'for': 'fish'}
+Plug 'chr4/nginx.vim', {'for': ['nginx']}
 
 " Initialize plugin system
 call plug#end()
@@ -316,6 +302,11 @@ set termguicolors
 " darcula
 colorscheme darcula
 let g:lightline = { 'colorscheme': 'darculaOriginal' }
+
+" ===
+" === airline
+" ===
+let g:airline_highlighting_cache = 1
 
 " ===
 " === coc
