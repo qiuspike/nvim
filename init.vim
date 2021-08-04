@@ -5,6 +5,8 @@
 " ===
 " === System
 " ===
+" no compatiable to vi
+set nocompatible
 " copy from system clipboard
 set clipboard=unnamed
 " let the color compatiable to terminal
@@ -16,7 +18,7 @@ let &t_ut=' '
 " ===
 " === Editor behavior
 " ===
-"show corsor line
+" show corsor line
 set cursorline
 " expand tab
 set expandtab
@@ -127,19 +129,9 @@ inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
-" J/K keys for 5 times j/k (faster navigation)
-noremap <silent> K 5k
-noremap <silent> J 5j
-" J/L keys for 5 times j/l (faster navigation)
-noremap <silent> H 5h
-noremap <silent> L 5l
 " C-a C-e for line move
 noremap <C-a> 0
 noremap <C-e> $
-
-" Faster in-line navigation
-noremap W 5w
-noremap B 5b
 
 " ===
 " === Window management
@@ -318,7 +310,7 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Use M to show documentation in preview window.
-nnoremap <silent> M :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
