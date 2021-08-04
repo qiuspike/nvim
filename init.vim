@@ -232,14 +232,13 @@ endfor
 noremap <LEADER>/ :term<CR>
 " Using esc in term mode
 :tnoremap <ESC> <C-\><C-n>
-" No line number
-:autocmd TermOpen * setlocal nonumber
 
 " ===
 " === Autocmd
 " ===
 augroup EditVim
   autocmd!
+  autocmd TermOpen * setlocal nonumber
   autocmd BufNewFile,BufRead fish_funced set ft=fish
   autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
   autocmd FileType help noremap <buffer> q :q<cr>
@@ -271,16 +270,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 
 " Terminal
-Plug 'voldikss/vim-floaterm'
+Plug 'voldikss/vim-floaterm', { 'on': 'FloatermToggle' }
 
 " Rainbow parentheses
 Plug 'luochen1990/rainbow', { 'for': 'clojure' }
 
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
-
-" wakatime
-Plug 'wakatime/vim-wakatime'
 
 " Git
 Plug 'tpope/vim-fugitive'
