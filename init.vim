@@ -12,7 +12,6 @@ let &t_ut=' '
 
 " enable mouse scroll
 " set mouse=nv
-filetype plugin indent on
 
 " ===
 " === Editor behavior
@@ -83,7 +82,7 @@ let g:python_host_prog='/usr/local/bin/python'
 " === Basic Mappings
 " ===
 " Set <LEADER>
-let mapleader=" "
+let mapleader=' '
 
 " Save & quit
 map S :w<CR>
@@ -196,7 +195,7 @@ endfor
 " === Terminal
 " ===
 " Using esc in term mode
-:tnoremap <ESC> <C-\><C-n>
+tnoremap <ESC> <C-\><C-n>
 
 " ===
 " === Autocmd
@@ -267,7 +266,6 @@ call plug#end()
 " ===
 " enable true colors support
 set termguicolors
-" darcula
 colorscheme darcula
 let g:lightline = { 'colorscheme': 'darculaOriginal' }
 
@@ -405,4 +403,4 @@ let g:gist_show_privates = 1
 " === Necessary Commands to Execute
 " ===
 "clear search high light whem use vim or nvim open a file
-exec "nohlsearch"
+exec 'nohlsearch'
