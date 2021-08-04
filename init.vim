@@ -17,10 +17,6 @@ filetype plugin indent on
 " ===
 " === Editor behavior
 " ===
-" show line number
-" set number
-" show relative line number
-" set relativenumber
 "show corsor line
 set cursorline
 " expand tab
@@ -56,8 +52,6 @@ set formatoptions-=tc
 "
 set splitright
 set splitbelow
-" enable mouse in vim
-" set mouse=a
 " if in insert, replace  or visual mode put a message on the last lie swith to not show this lie
 set noshowmode
 "show type command
@@ -81,7 +75,6 @@ set visualbell
 set hlsearch
 "charter by charter high light the entered words during the search
 set incsearch
-
 " set python
 let g:python3_host_prog='/usr/local/bin/python3'
 let g:python_host_prog='/usr/local/bin/python'
@@ -102,9 +95,6 @@ map R :source ~/.config/nvim/init.vim<CR>
 
 " Open the init.vim file anytime
 map <LEADER>R :e ~/.config/nvim/init.vim<CR>
-
-" Open zshrc
-map <LEADER>Z :e ~/.zshrc<CR>
 
 " Open config.fish
 map <LEADER>F :e ~/.config/fish/config.fish<CR>
@@ -298,10 +288,8 @@ set cmdheight=2
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-"
 let g:coc_global_extensions = ['coc-html', 'coc-yaml', 'coc-json', 'coc-css', 'coc-tailwindcss', 'coc-yank', 'coc-stylelint',  'coc-floaterm', 'coc-lists', 'coc-tsserver', 'coc-vimlsp', 'coc-sh', 'coc-go', 'coc-rust-analyzer', 'coc-clangd', 'coc-lua', 'coc-pyright', 'coc-sql']
 
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -316,7 +304,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use <cr> for confirm completion
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 " Useful commands
-" nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
+nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -344,11 +332,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-
 " ===
 " === Rainbow
 " ===
@@ -364,6 +347,9 @@ map tt :NERDTreeToggle<CR>
 " ===
 nnoremap   <silent>   <C-t>    :FloatermToggle<CR>
 tnoremap   <silent>   <C-t>    <C-\><C-n>:FloatermToggle<CR>
+nnoremap   <silent>   <C-x>    :FloatermNext<CR>
+tnoremap   <silent>   <C-x>    <C-\><C-n>:FloatermNext<CR>
+nnoremap   <silent>   <C-c>    :FloatermNew<CR>
 
 let g:floaterm_width = 0.5
 let g:floaterm_height = 0.5
@@ -383,8 +369,6 @@ nnoremap <LEADER>b :Buffers<CR>
 nnoremap <LEADER>a :Ag<CR>
 nnoremap <LEADER>r :Rg<CR>
 nnoremap <LEADER>w :Windows<CR>
-nnoremap <LEADER>n :BLines<CR>
-nnoremap <LEADER>N :Lines<CR>
 nnoremap <LEADER>i :BCommits<CR>
 nnoremap <LEADER>I :Commits<CR>
 nnoremap <LEADER>s :History:<CR>
