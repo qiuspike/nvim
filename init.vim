@@ -86,11 +86,6 @@ let g:python_host_prog='/usr/local/bin/python'
 " Set <LEADER>
 let mapleader=' '
 
-" Save & quit
-map S :w<CR>
-map Q :q<CR>
-map ! :q!<CR>
-
 " Reload config file
 map R :source ~/.config/nvim/init.vim<CR>
 
@@ -106,19 +101,12 @@ nnoremap Y y$
 " Copy to system clipboard
 vnoremap Y :w !xclip -i -sel c<CR>
 
-" delete a word, like <C-w> but with delete
-" <C-o> for normal command in insert mode
-inoremap <C-d> <C-o>daw
-
 " Clear all search high light
 noremap <LEADER><CR> :nohlsearch<CR>
 
 " line number
 noremap <C-L><C-L> :set invnumber<CR>
 inoremap <C-L><C-L> <C-O>:set invnumber<CR>
-
-" Disabling the r key
-noremap r <nop>
 
 " ===
 " === Cursor Movement
@@ -133,6 +121,10 @@ inoremap <C-n> <Down>
 noremap <C-a> 0
 noremap <C-e> $
 
+inoremap <C-a> <home>
+inoremap <C-e> <end>
+inoremap <C-d> <del>
+
 " ===
 " === Window management
 " ===
@@ -142,29 +134,11 @@ map <LEADER>j <C-w>j
 map <LEADER>h <C-w>h
 map <LEADER>l <C-w>l
 
-" split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-noremap sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-noremap sj :set splitbelow<CR>:split<CR>
-noremap sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-noremap sl :set splitright<CR>:vsplit<CR>
-
 " Resize splits with arrow keys
-map <up> :res +5<CR>
-map <down> :res -5<CR>
-map <left> :vertical resize+5<CR>
-map <right> :vertical resize-5<CR>
-
-" Place the two screens up and down
-map ss <C-w>t<C-w>K
-" Place the two screens side by side
-map sv <C-w>t<C-w>H
-
-" Rotate screens
-noremap srh <C-w>b<C-w>K
-noremap srv <C-w>b<C-w>H
-
-" Press <LEADER> + q to close the window below the current window
-noremap <LEADER>q <C-w>j:q<CR>
+noremap <up> :res +5<CR>
+noremap <down> :res -5<CR>
+noremap <left> :vertical resize+5<CR>
+noremap <right> :vertical resize-5<CR>
 
 " ===
 " === Tab management
@@ -354,15 +328,12 @@ let g:floaterm_opener = 'vsplit'
 " use `<LEADER>` as fzf.vim prefix key
 nnoremap <LEADER>f :Files<CR>
 nnoremap <LEADER>g :GFiles?<CR>
-nnoremap <LEADER>G :GFiles<CR>
 nnoremap <LEADER>b :Buffers<CR>
 nnoremap <LEADER>a :Ag<CR>
 nnoremap <LEADER>r :Rg<CR>
 nnoremap <LEADER>w :Windows<CR>
 nnoremap <LEADER>i :BCommits<CR>
 nnoremap <LEADER>I :Commits<CR>
-nnoremap <LEADER>s :History:<CR>
-nnoremap <LEADER>S :History<CR>
 nnoremap <LEADER>d :Commands<CR>
 nnoremap <LEADER>m :Gblame<CR>
 
