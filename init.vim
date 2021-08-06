@@ -3,7 +3,7 @@
 " ====================
 
 " ===
-" === System
+" === system
 " ===
 " no compatiable to vi
 set nocompatible
@@ -11,74 +11,76 @@ set nocompatible
 set clipboard=unnamed
 " let the color compatiable to terminal
 let &t_ut=' '
-
 " enable mouse scroll
 " set mouse=nv
+" set python
+let g:python3_host_prog='/usr/local/bin/python3'
+let g:python_host_prog='/usr/local/bin/python'
 
 " ===
-" === Editor behavior
+" === display
 " ===
-" show corsor line
+" show the hidden char like tab
+set list
+set showcmd
+set wrap
 set cursorline
-" expand tab
+set listchars=tab:▸\ ,trail:▫
+
+" ===
+" === tab
+" ===
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+
+" ===
+" === search
+" ===
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+
+" ===
+" === fold
+" ===
+" the kind of folding used for the current window
+set foldmethod=indent
+set foldlevel=99
+set foldenable
+
+" ===
+" === editor behavior
+" ===
 " apply the indentation of the current line to the next
 set autoindent
-" show the space at the end of line
-set list
-" show the tab
-set listchars=tab:▸\ ,trail:▫
+
+set splitright
+set splitbelow
+
+set backspace=indent,eol,start
+set formatoptions-=tc
+set textwidth=0
+set inccommand=split
+set lazyredraw
+set visualbell
+
 " corsor distance form buffer edge some lines
 set scrolloff=2
 " allow for mappings includes 'Esc', while preserving zero timeout after pressing it manually
 set ttimeoutlen=0
 set notimeout
 " rember the cursor positon and other status when reopen file
-set viewoptions=cursor,folds,slash,unix
-" automatic line break
-set wrap
-" set text width
-set tw=0
+set viewoptions=cursor,folds
 " expression whis is evaluated to obtain the proper indent for a line
 set indentexpr=
-" the kind of folding used for the current window
-set foldmethod=indent
-"
-set foldlevel=99
-set foldenable
-set formatoptions-=tc
-"
-set splitright
-set splitbelow
 " if in insert, replace  or visual mode put a message on the last lie swith to not show this lie
 set noshowmode
-"show type command
-set showcmd
 " open command line comletion in enhanced mode
 set wildmenu
-"ignore case the word during the search
-set ignorecase
-set smartcase
-" Some testing features
-set shortmess+=c
-"
-set inccommand=split
-"should make scrolling faster
-set ttyfast
-set lazyredraw
-"
-set visualbell
-"
-"high light search
-set hlsearch
-"charter by charter high light the entered words during the search
-set incsearch
-" set python
-let g:python3_host_prog='/usr/local/bin/python3'
-let g:python_host_prog='/usr/local/bin/python'
+
 
 " ===
 " === Basic Mappings
@@ -208,6 +210,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip it
 Plug 'scrooloose/nerdcommenter' " in <LEADER>cc to comment a line; <LEADER>ci
+Plug 'tpope/vim-surround' " S{x} to add x to selected text, and `cs{x}{y}` `ds{x}` `ysiw<em>`
 
 " on demand utilities
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -361,9 +364,3 @@ let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 let g:gist_post_private = 1
 let g:gist_show_privates = 1
-
-" ===
-" === Necessary Commands to Execute
-" ===
-"clear search high light whem use vim or nvim open a file
-exec 'nohlsearch'
