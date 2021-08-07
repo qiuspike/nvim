@@ -197,6 +197,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
 
 " coc and fzf
+" note: fzf quit with <C-g> ( <C-q> <C-c> ) and move with <C-n/p> or <C-j/k>
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -211,6 +212,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip it
 Plug 'scrooloose/nerdcommenter' " in <LEADER>cc to comment a line; <LEADER>ci
 Plug 'tpope/vim-surround' " S{x} to add x to selected text, and `cs{x}{y}` `ds{x}` `ysiw<em>`
+Plug 'kshenoy/vim-signature' " for mark
 
 " on demand utilities
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -305,6 +307,11 @@ endfunction
 let g:rainbow_active = 1
 
 " ===
+" === vim-signature
+" ===
+highlight SignatureMarkText guifg=White ctermfg=White
+
+" ===
 " === NERDTree
 " ===
 map tt :NERDTreeToggle<CR>
@@ -332,19 +339,18 @@ let g:floaterm_opener = 'vsplit'
 nnoremap <LEADER>f :Files<CR>
 nnoremap <LEADER>g :GFiles?<CR>
 nnoremap <LEADER>b :Buffers<CR>
-nnoremap <LEADER>a :Ag<CR>
 nnoremap <LEADER>r :Rg<CR>
 nnoremap <LEADER>w :Windows<CR>
 nnoremap <LEADER>i :BCommits<CR>
 nnoremap <LEADER>I :Commits<CR>
 nnoremap <LEADER>d :Commands<CR>
-nnoremap <LEADER>m :Gblame<CR>
+nnoremap <LEADER>a :Gblame<CR>
+nnoremap <LEADER>m :Marks<CR>
 
 " ===
 " === coc.fzf
 " ===
 nnoremap <silent> <LEADER>;       :<C-u>CocFzfList<CR>
-nnoremap <silent> <LEADER>e       :<C-u>CocFzfList extensions<CR>
 nnoremap <silent> <LEADER>o       :<C-u>CocFzfList outline<CR>
 
 " ===
