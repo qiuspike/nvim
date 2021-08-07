@@ -11,9 +11,9 @@ set nocompatible
 set clipboard=unnamed
 " let the color compatiable to terminal
 let &t_ut=' '
-" enable mouse scroll
-" set mouse=nv
-" set python
+" autowrite buffer to file
+set autowriteall
+
 let g:python3_host_prog='/usr/local/bin/python3'
 let g:python_host_prog='/usr/local/bin/python'
 
@@ -97,6 +97,7 @@ vnoremap Y :w !xclip -i -sel c<CR>
 
 " Clear all search high light
 noremap <LEADER><CR> :nohlsearch<CR>
+noremap <BS> :nohlsearch<CR>
 
 " line number
 noremap <C-L><C-L> :set invnumber<CR>
