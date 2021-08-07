@@ -231,6 +231,7 @@ Plug 'luochen1990/rainbow', { 'for': 'clojure' }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'chr4/nginx.vim', {'for': ['nginx']}
+Plug 'fladson/vim-kitty', { 'for': 'kitty' }
 
 " Initialize plugin system
 call plug#end()
