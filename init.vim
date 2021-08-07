@@ -174,13 +174,15 @@ tnoremap <ESC> <C-\><C-n>
 " ===
 " === Autocmd
 " ===
-augroup EditVim
-  autocmd!
-  autocmd BufNewFile,BufRead fish_funced set ft=fish
-  autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-  " open the fiel cursor at hte last edited position
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-augroup END
+if has("autocmd")
+  augroup EditVim
+    autocmd!
+    autocmd BufNewFile,BufRead fish_funced set ft=fish
+    autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+    " open the fiel cursor at hte last edited position
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  augroup END
+endif
 
 " =====================
 " === Plugins Setup ===
@@ -197,15 +199,13 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'doums/darcula'
 
 " status bar
-Plug 'vim-airline/vim-airline'
-Plug 'bling/vim-bufferline'
+Plug 'itchyny/lightline.vim'
 
 " coc and fzf
 " note: fzf quit with <C-g> ( <C-q> <C-c> ) and move with <C-n/p> or <C-j/k>
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 
 " editor and git
 Plug 'editorconfig/editorconfig-vim'
@@ -216,11 +216,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip it
 Plug 'scrooloose/nerdcommenter' " in <LEADER>cc to comment a line; <LEADER>ci
 Plug 'tpope/vim-surround' " S{x} to add x to selected text, and `cs{x}{y}` `ds{x}` `ysiw<em>`
-Plug 'kshenoy/vim-signature' " for mark
 
 " on demand utilities
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'voldikss/vim-floaterm', { 'on': 'FloatermToggle' }
+Plug 'voldikss/vim-floaterm', { 'on': ['FloatermToggle', 'FloatermNew'] }
+Plug 'antoinemadec/coc-fzf', {'branch': 'release', 'on': 'CocFzfList'}
 
 " gist.github.com
 Plug 'mattn/webapi-vim', { 'on': 'Gist' }
@@ -242,12 +242,21 @@ call plug#end()
 " enable true colors support
 set termguicolors
 colorscheme darcula
-let g:lightline = { 'colorscheme': 'darculaOriginal' }
 
 " ===
-" === airline
+" === lightline
 " ===
-let g:airline_highlighting_cache = 1
+" colorscheme wombat, darcula, darculaOriginal
+let g:lightline = {
+      \ 'colorscheme': 'darculaOriginal',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
 " ===
 " === coc
@@ -257,7 +266,7 @@ set hidden
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
-set cmdheight=2
+" set cmdheight=2
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
@@ -311,11 +320,6 @@ endfunction
 let g:rainbow_active = 1
 
 " ===
-" === vim-signature
-" ===
-highlight SignatureMarkText guifg=White ctermfg=White
-
-" ===
 " === NERDTree
 " ===
 map tt :NERDTreeToggle<CR>
@@ -354,7 +358,7 @@ nnoremap <LEADER>m :Marks<CR>
 " ===
 " === coc.fzf
 " ===
-nnoremap <silent> <LEADER>;       :<C-u>CocFzfList<CR>
+nnoremap <silent> <LEADER>;       :CocFzfList<CR>
 nnoremap <silent> <LEADER>o       :<C-u>CocFzfList outline<CR>
 
 " ===
