@@ -32,6 +32,7 @@ set listchars=tab:▸\ ,trail:▫
 " ===
 set expandtab
 set tabstop=2
+" for autoindent
 set shiftwidth=2
 set softtabstop=2
 
@@ -87,15 +88,6 @@ set wildmenu
 " ===
 " Set <LEADER>
 let mapleader=' '
-
-" Reload config file
-map R :source ~/.config/nvim/init.vim<CR>
-
-" Open the init.vim file anytime
-map <LEADER>R :e ~/.config/nvim/init.vim<CR>
-
-" Open config.fish
-map <LEADER>F :e ~/.config/fish/config.fish<CR>
 
 " Make Y to copy till the end of the line
 nnoremap Y y$
