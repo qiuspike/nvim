@@ -89,6 +89,9 @@ set wildmenu
 " Set <LEADER>
 let mapleader=' '
 
+" for quick quit
+noremap <LEADER>q :q<CR>
+
 " Make Y to copy till the end of the line
 nnoremap Y y$
 
@@ -140,25 +143,24 @@ noremap <right> :vertical resize-5<CR>
 " ===
 " === Tab management
 " ===
-" Create a new tab with tu
-map tu :tabe<CR>
-" Move around tabs with th and tl
-map th :-tabnext<CR>
-map tl :+tabnext<CR>
-" Move the tabs with tmh and tml
-map tmh :-tabmove<CR>
-map tml :+tabmove<CR>
+noremap <silent> <LEADER>tc :tabnew<CR>
+noremap <silent> <LEADER>tq :tabclose<CR>
+noremap <silent> <LEADER>tn :tabnext<CR>
+noremap <silent> <LEADER>tp :tabprev<CR>
+noremap <silent> <LEADER>to :tabonly<CR>
+noremap <silent> <LEADER>tl :-tabmove<CR>
+noremap <silent> <LEADER>tr :+tabmove<CR>
 
 " <Leader>[1-9] move to tab [1-9]
-noremap <silent><LEADER>1 1gt<cr>
-noremap <silent><LEADER>2 2gt<cr>
-noremap <silent><LEADER>3 3gt<cr>
-noremap <silent><LEADER>4 4gt<cr>
-noremap <silent><LEADER>5 5gt<cr>
-noremap <silent><LEADER>6 6gt<cr>
-noremap <silent><LEADER>7 7gt<cr>
-noremap <silent><LEADER>8 8gt<cr>
-noremap <silent><LEADER>9 9gt<cr>
+noremap <silent><LEADER>1 1gt<CR>
+noremap <silent><LEADER>2 2gt<CR>
+noremap <silent><LEADER>3 3gt<CR>
+noremap <silent><LEADER>4 4gt<CR>
+noremap <silent><LEADER>5 5gt<CR>
+noremap <silent><LEADER>6 6gt<CR>
+noremap <silent><LEADER>7 7gt<CR>
+noremap <silent><LEADER>8 8gt<CR>
+noremap <silent><LEADER>9 9gt<CR>
 
 " ===
 " === Terminal
@@ -173,8 +175,6 @@ augroup EditVim
   autocmd!
   autocmd BufNewFile,BufRead fish_funced set ft=fish
   autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-  " using q to quit help doc
-  autocmd FileType help noremap <buffer> q :q<cr>
   " open the fiel cursor at hte last edited position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 augroup END
