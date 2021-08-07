@@ -126,6 +126,8 @@ noremap <C-e> $
 inoremap <C-a> <home>
 inoremap <C-e> <end>
 inoremap <C-d> <del>
+cnoremap <C-a> <home>
+cnoremap <C-e> <end>
 
 " ===
 " === Window management
@@ -155,9 +157,15 @@ map tmh :-tabmove<CR>
 map tml :+tabmove<CR>
 
 " <Leader>[1-9] move to tab [1-9]
-for s:i in range(1, 9)
-  execute 'nnoremap <Leader>' . s:i . ' ' . s:i . 'gt'
-endfor
+noremap <silent><LEADER>1 1gt<cr>
+noremap <silent><LEADER>2 2gt<cr>
+noremap <silent><LEADER>3 3gt<cr>
+noremap <silent><LEADER>4 4gt<cr>
+noremap <silent><LEADER>5 5gt<cr>
+noremap <silent><LEADER>6 6gt<cr>
+noremap <silent><LEADER>7 7gt<cr>
+noremap <silent><LEADER>8 8gt<cr>
+noremap <silent><LEADER>9 9gt<cr>
 
 " ===
 " === Terminal
