@@ -91,6 +91,7 @@ let mapleader=' '
 
 " for quick quit
 noremap <LEADER>q :q<CR>
+noremap <LEADER>! :q!<CR>
 
 " Make Y to copy till the end of the line
 nnoremap Y y$
@@ -118,12 +119,14 @@ inoremap <C-n> <Down>
 " C-a C-e for line move
 noremap <C-a> 0
 noremap <C-e> $
-
 inoremap <C-a> <home>
 inoremap <C-e> <end>
-inoremap <C-d> <del>
 cnoremap <C-a> <home>
 cnoremap <C-e> <end>
+inoremap <C-d> <del>
+" for insert quick word move
+inoremap <M-f> <C-o>w
+inoremap <M-b> <C-o>b
 
 " ===
 " === Window management
