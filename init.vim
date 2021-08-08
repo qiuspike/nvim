@@ -90,8 +90,8 @@ set wildmenu
 let mapleader=' '
 
 " for quick quit
-noremap <LEADER>q :q<CR>
-noremap <LEADER>! :q!<CR>
+nnoremap <LEADER>q :q<CR>
+nnoremap <LEADER>! :q!<CR>
 
 " Make Y to copy till the end of the line
 nnoremap Y y$
@@ -100,12 +100,7 @@ nnoremap Y y$
 vnoremap Y :w !xclip -i -sel c<CR>
 
 " Clear all search high light
-noremap <LEADER><CR> :nohlsearch<CR>
-noremap <BS> :nohlsearch<CR>
-
-" line number
-noremap <C-L><C-L> :set invnumber<CR>
-inoremap <C-L><C-L> <C-O>:set invnumber<CR>
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " ===
 " === Cursor Movement
@@ -117,8 +112,8 @@ inoremap <C-f> <Right>
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 " C-a C-e for line move
-noremap <C-a> 0
-noremap <C-e> $
+nnoremap <C-a> 0
+nnoremap <C-e> $
 inoremap <C-a> <home>
 inoremap <C-e> <end>
 cnoremap <C-a> <home>
@@ -131,39 +126,34 @@ inoremap <M-b> <C-o>b
 " ===
 " === Window management
 " ===
-" Use <LEADER> + new arrow keys for moving the cursor around windows
-map <LEADER>k <C-w>k
-map <LEADER>j <C-w>j
-map <LEADER>h <C-w>h
-map <LEADER>l <C-w>l
-
+" using native <C-w>h/j/k/l and <C-w>v/s/c/q
 " Resize splits with arrow keys
-noremap <up> :res +5<CR>
-noremap <down> :res -5<CR>
-noremap <left> :vertical resize+5<CR>
-noremap <right> :vertical resize-5<CR>
+nnoremap <up> :res +5<CR>
+nnoremap <down> :res -5<CR>
+nnoremap <left> :vertical resize+5<CR>
+nnoremap <right> :vertical resize-5<CR>
 
 " ===
 " === Tab management
 " ===
-noremap <silent> <LEADER>tc :tabnew<CR>
-noremap <silent> <LEADER>tq :tabclose<CR>
-noremap <silent> <LEADER>tn :tabnext<CR>
-noremap <silent> <LEADER>tp :tabprev<CR>
-noremap <silent> <LEADER>to :tabonly<CR>
-noremap <silent> <LEADER>tl :-tabmove<CR>
-noremap <silent> <LEADER>tr :+tabmove<CR>
+nnoremap <silent> <LEADER>tc :tabnew<CR>
+nnoremap <silent> <LEADER>tq :tabclose<CR>
+nnoremap <silent> <LEADER>tn :tabnext<CR>
+nnoremap <silent> <LEADER>tp :tabprev<CR>
+nnoremap <silent> <LEADER>to :tabonly<CR>
+nnoremap <silent> <LEADER>tl :-tabmove<CR>
+nnoremap <silent> <LEADER>tr :+tabmove<CR>
 
 " <Leader>[1-9] move to tab [1-9]
-noremap <silent><LEADER>1 1gt<CR>
-noremap <silent><LEADER>2 2gt<CR>
-noremap <silent><LEADER>3 3gt<CR>
-noremap <silent><LEADER>4 4gt<CR>
-noremap <silent><LEADER>5 5gt<CR>
-noremap <silent><LEADER>6 6gt<CR>
-noremap <silent><LEADER>7 7gt<CR>
-noremap <silent><LEADER>8 8gt<CR>
-noremap <silent><LEADER>9 9gt<CR>
+nnoremap <silent><LEADER>1 1gt<CR>
+nnoremap <silent><LEADER>2 2gt<CR>
+nnoremap <silent><LEADER>3 3gt<CR>
+nnoremap <silent><LEADER>4 4gt<CR>
+nnoremap <silent><LEADER>5 5gt<CR>
+nnoremap <silent><LEADER>6 6gt<CR>
+nnoremap <silent><LEADER>7 7gt<CR>
+nnoremap <silent><LEADER>8 8gt<CR>
+nnoremap <silent><LEADER>9 9gt<CR>
 
 " ===
 " === Terminal
@@ -217,6 +207,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip it
 Plug 'scrooloose/nerdcommenter' " in <LEADER>cc to comment a line; <LEADER>ci
 Plug 'tpope/vim-surround' " S{x} to add x to selected text, and `cs{x}{y}` `ds{x}` `ysiw<em>`
+Plug 'easymotion/vim-easymotion'
 
 " on demand utilities
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -321,6 +312,26 @@ endfunction
 let g:rainbow_active = 1
 
 " ===
+" === easymotion
+" ===
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap <LEADER>s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap <LEADER>vv <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" ===
 " === NERDTree
 " ===
 map tt :NERDTreeToggle<CR>
@@ -355,7 +366,7 @@ nnoremap <silent> <LEADER>w :Windows<CR>
 nnoremap <silent> <LEADER>i :BCommits<CR>
 nnoremap <silent> <LEADER>I :Commits<CR>
 nnoremap <silent> <LEADER>d :Commands<CR>
-nnoremap <silent> <LEADER>a :Gblame<CR>
+nnoremap <silent> <LEADER>a :Git blame<CR>
 nnoremap <silent> <LEADER>m :Marks<CR>
 
 " ===
