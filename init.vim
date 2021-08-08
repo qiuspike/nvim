@@ -206,6 +206,7 @@ Plug 'itchyny/lightline.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 
 " editor and git
 Plug 'editorconfig/editorconfig-vim'
@@ -220,7 +221,6 @@ Plug 'tpope/vim-surround' " S{x} to add x to selected text, and `cs{x}{y}` `ds{x
 " on demand utilities
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'voldikss/vim-floaterm', { 'on': ['FloatermToggle', 'FloatermNew'] }
-Plug 'antoinemadec/coc-fzf', {'branch': 'release', 'on': 'CocFzfList'}
 
 " gist.github.com
 Plug 'mattn/webapi-vim', { 'on': 'Gist' }
@@ -345,16 +345,18 @@ let g:floaterm_opener = 'vsplit'
 " === fzf.vim
 " ===
 " use `<LEADER>` as fzf.vim prefix key
-nnoremap <LEADER>f :Files<CR>
-nnoremap <LEADER>g :GFiles?<CR>
-nnoremap <LEADER>b :Buffers<CR>
-nnoremap <LEADER>r :Rg<CR>
-nnoremap <LEADER>w :Windows<CR>
-nnoremap <LEADER>i :BCommits<CR>
-nnoremap <LEADER>I :Commits<CR>
-nnoremap <LEADER>d :Commands<CR>
-nnoremap <LEADER>a :Gblame<CR>
-nnoremap <LEADER>m :Marks<CR>
+nnoremap <silent> <LEADER>f :Files<CR>
+nnoremap <silent> <LEADER>g :GFiles?<CR>
+nnoremap <silent> <LEADER>b :Buffers<CR>
+nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
+xnoremap <silent> <Leader>r y:Rg <C-R>"<CR>
+nnoremap <silent> <LEADER>R :Rg<CR>
+nnoremap <silent> <LEADER>w :Windows<CR>
+nnoremap <silent> <LEADER>i :BCommits<CR>
+nnoremap <silent> <LEADER>I :Commits<CR>
+nnoremap <silent> <LEADER>d :Commands<CR>
+nnoremap <silent> <LEADER>a :Gblame<CR>
+nnoremap <silent> <LEADER>m :Marks<CR>
 
 " ===
 " === coc.fzf
