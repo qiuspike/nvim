@@ -251,62 +251,6 @@ let g:lightline = {
       \ }
 
 " ===
-" === coc
-" ===
-" TextEdit might fail if hidden is not set.
-set hidden
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-" set cmdheight=2
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-let g:coc_global_extensions = ['coc-html', 'coc-yaml', 'coc-json', 'coc-css', 'coc-tailwindcss', 'coc-yank', 'coc-stylelint',  'coc-floaterm', 'coc-lists', 'coc-tsserver', 'coc-vimlsp', 'coc-sh', 'coc-go', 'coc-rust-analyzer', 'coc-clangd', 'coc-lua', 'coc-pyright', 'coc-sql']
-
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]	=~ '\s'
-endfunction
-inoremap <silent><expr> <Tab>
-			\ pumvisible() ? "\<C-n>" :
-			\ <SID>check_back_space() ? "\<Tab>" :
-			\ coc#refresh()
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent><expr> <c-space> coc#refresh()
-" Use <cr> for confirm completion
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-" Useful commands
-nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> rn <Plug>(coc-rename)
-" Change completion windows background
-hi Pmenu ctermfg=0 ctermbg=6 guibg=#444444
-hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Use M to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" ===
 " === Rainbow
 " ===
 let g:rainbow_active = 1
@@ -334,7 +278,7 @@ map <lEADER>k <Plug>(easymotion-k)
 " ===
 " === NERDTree
 " ===
-nnoremap <LEADER>t :NERDTreeToggle<CR>
+nnoremap <LEADER>tt :NERDTreeToggle<CR>
 nnoremap <LEADER>l :NERDTreeFind<CR>
 nnoremap <LEADER>c :NERDTreeFocus<CR>
 
@@ -394,3 +338,59 @@ let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 let g:gist_post_private = 1
 let g:gist_show_privates = 1
+
+" ===
+" === coc
+" ===
+" TextEdit might fail if hidden is not set.
+set hidden
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+" set cmdheight=2
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+let g:coc_global_extensions = ['coc-html', 'coc-yaml', 'coc-json', 'coc-css', 'coc-tailwindcss', 'coc-yank', 'coc-stylelint',  'coc-floaterm', 'coc-lists', 'coc-tsserver', 'coc-vimlsp', 'coc-sh', 'coc-go', 'coc-rust-analyzer', 'coc-clangd', 'coc-lua', 'coc-pyright', 'coc-sql']
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]	=~ '\s'
+endfunction
+inoremap <silent><expr> <Tab>
+			\ pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<Tab>" :
+			\ coc#refresh()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <c-space> coc#refresh()
+" Use <cr> for confirm completion
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+" Useful commands
+nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> rn <Plug>(coc-rename)
+" Change completion windows background
+hi Pmenu ctermfg=0 ctermbg=6 guibg=#444444
+hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Use M to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
