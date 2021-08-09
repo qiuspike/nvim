@@ -328,13 +328,15 @@ nmap <LEADER>vv <Plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
 
 " JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+map <LEADER>j <Plug>(easymotion-j)
+map <lEADER>k <Plug>(easymotion-k)
 
 " ===
 " === NERDTree
 " ===
-map tt :NERDTreeToggle<CR>
+nnoremap <LEADER>t :NERDTreeToggle<CR>
+nnoremap <LEADER>l :NERDTreeFind<CR>
+nnoremap <LEADER>c :NERDTreeFocus<CR>
 
 " ===
 " === floaterm
