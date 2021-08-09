@@ -13,6 +13,7 @@ set clipboard=unnamed
 let &t_ut=' '
 " autowrite buffer to file
 set autowriteall
+set undofile
 
 let g:python3_host_prog='/usr/local/bin/python3'
 let g:python_host_prog='/usr/local/bin/python'
@@ -114,6 +115,8 @@ inoremap <C-n> <Down>
 " C-a C-e for line move
 nnoremap <C-a> 0
 nnoremap <C-e> $
+xnoremap <C-a> 0
+xnoremap <C-e> $
 inoremap <C-a> <home>
 inoremap <C-e> <end>
 cnoremap <C-a> <home>
@@ -127,6 +130,17 @@ inoremap <M-b> <C-o>b
 " === Window management
 " ===
 " using native <C-w>h/j/k/l and <C-w>v/s/c/q
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
+if has('nvim')
+  tnoremap <M-h> <C-\><C-n><C-w>h
+  tnoremap <M-j> <C-\><C-n><C-w>j
+  tnoremap <M-k> <C-\><C-n><C-w>k
+  tnoremap <M-l> <C-\><C-n><C-w>l
+endif
+
 " Resize splits with arrow keys
 nnoremap <up> :res +5<CR>
 nnoremap <down> :res -5<CR>
@@ -208,6 +222,7 @@ Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or 
 Plug 'scrooloose/nerdcommenter' " in <LEADER>cc to comment a line; <LEADER>ci
 Plug 'tpope/vim-surround' " S{x} to add x to selected text, and `cs{x}{y}` `ds{x}` `ysiw<em>`
 Plug 'easymotion/vim-easymotion'
+Plug 'mhinz/vim-startify'
 
 " on demand utilities
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -324,12 +339,15 @@ nnoremap <silent> <LEADER>o       :<C-u>CocFzfList outline<CR>
 " ===
 " === nerdcommenter
 " ===
+" disable default mappings
+let g:NERDCreateDefaultMappings = 0
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-" let g:NERDTrimTrailingWhitespace = 1
+" add mappings
+map <LEADER>cc <plug>NERDCommenterComment
+map <LEADER>ci <plug>NERDCommenterInvert
 
 " ===
 " === Gist
