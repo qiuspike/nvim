@@ -225,7 +225,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-startify'
 
 " on demand utilities
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeFocus'] }
 Plug 'voldikss/vim-floaterm', { 'on': ['FloatermToggle', 'FloatermNew'] }
 
 " gist.github.com
@@ -294,8 +294,10 @@ map <lEADER>k <Plug>(easymotion-k)
 " === NERDTree
 " ===
 nnoremap <LEADER>tt :NERDTreeToggle<CR>
-nnoremap <LEADER>l :NERDTreeFind<CR>
-nnoremap <LEADER>c :NERDTreeFocus<CR>
+" locate current file
+nnoremap <LEADER>ll :NERDTreeFind<CR>
+" locate nerdtree
+nnoremap <LEADER>lf :NERDTreeFocus<CR>
 
 " ===
 " === floaterm
