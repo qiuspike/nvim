@@ -26,7 +26,7 @@ set list
 set showcmd
 set nowrap
 set cursorline
-set listchars=tab:▸\ ,trail:▫
+set listchars=tab:▸\ ,trail:▫,extends:>,nbsp:+
 
 " ===
 " === tab
@@ -186,6 +186,11 @@ if has("autocmd")
     " open the fiel cursor at hte last edited position
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   augroup END
+
+  augroup GoTab
+    autocmd!
+    autocmd FileType go setlocal shiftwidth=4 tabstop=4 noexpandtab
+  augroup END
 endif
 
 " =====================
@@ -233,11 +238,11 @@ Plug 'mattn/webapi-vim', { 'on': 'Gist' }
 Plug 'mattn/vim-gist', { 'on': 'Gist' }
 
 " language specific
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'luochen1990/rainbow', { 'for': 'clojure' }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'dag/vim-fish', {'for': 'fish'}
-Plug 'chr4/nginx.vim', {'for': ['nginx']}
+Plug 'chr4/nginx.vim', {'for': 'nginx'}
 Plug 'fladson/vim-kitty', { 'for': 'kitty' }
 
 " Initialize plugin system
@@ -359,6 +364,13 @@ let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 let g:gist_post_private = 1
 let g:gist_show_privates = 1
+
+" ===
+" === vim-go
+" ===
+" disable all key mappings
+let g:go_def_mapping_enabled = 0
+let g:go_get_update = 0
 
 " ===
 " === coc
