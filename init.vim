@@ -24,7 +24,7 @@ let g:python_host_prog='/usr/local/bin/python'
 " show the hidden char like tab
 set list
 set showcmd
-set wrap
+set nowrap
 set cursorline
 set listchars=tab:▸\ ,trail:▫
 
