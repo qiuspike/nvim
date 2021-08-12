@@ -233,6 +233,7 @@ Plug 'mattn/webapi-vim', { 'on': 'Gist' }
 Plug 'mattn/vim-gist', { 'on': 'Gist' }
 
 " language specific
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'luochen1990/rainbow', { 'for': 'clojure' }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'dag/vim-fish', {'for': 'fish'}
@@ -371,7 +372,7 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-let g:coc_global_extensions = ['coc-html', 'coc-yaml', 'coc-json', 'coc-css', 'coc-tailwindcss', 'coc-yank', 'coc-stylelint',  'coc-floaterm', 'coc-lists', 'coc-tsserver', 'coc-vimlsp', 'coc-sh', 'coc-go', 'coc-rust-analyzer', 'coc-clangd', 'coc-lua', 'coc-pyright', 'coc-sql']
+let g:coc_global_extensions = ['coc-html', 'coc-yaml', 'coc-json', 'coc-css', 'coc-tailwindcss', 'coc-yank', 'coc-stylelint',  'coc-floaterm', 'coc-lists', 'coc-tsserver', 'coc-vimlsp', 'coc-sh', 'coc-go', 'coc-rust-analyzer', 'coc-clangd', 'coc-lua', 'coc-pyright', 'coc-sql', 'coc-snippets']
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
