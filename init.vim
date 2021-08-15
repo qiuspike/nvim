@@ -24,9 +24,9 @@ let g:python_host_prog='/usr/local/bin/python'
 " show the hidden char like tab
 set list
 set showcmd
-set nowrap
+set wrap
 set cursorline
-set listchars=tab:▸\ ,trail:▫,extends:>,nbsp:+
+set listchars=tab:▸\ ,trail:▫
 
 " ===
 " === tab
@@ -227,7 +227,6 @@ Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or 
 Plug 'scrooloose/nerdcommenter' " in <LEADER>cc to comment a line; <LEADER>ci
 Plug 'tpope/vim-surround' " S{x} to add x to selected text, and `cs{x}{y}` `ds{x}` `ysiw<em>`
 Plug 'easymotion/vim-easymotion'
-Plug 'mhinz/vim-startify'
 
 " on demand utilities
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeFocus'] }
@@ -400,7 +399,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use <cr> for confirm completion
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 " Useful commands
-nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
