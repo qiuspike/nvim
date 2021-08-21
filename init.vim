@@ -181,6 +181,7 @@ tnoremap <ESC> <C-\><C-n>
 if has("autocmd")
   augroup EditVim
     autocmd!
+    autocmd BufNewFile,BufRead shrc set ft=bash
     autocmd BufNewFile,BufRead fish_funced set ft=fish
     autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
     " open the fiel cursor at hte last edited position
