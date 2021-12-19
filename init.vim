@@ -227,7 +227,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip it
 Plug 'scrooloose/nerdcommenter' " in <LEADER>cc to comment a line; <LEADER>ci
 Plug 'tpope/vim-surround' " S{x} to add x to selected text, and `cs{x}{y}` `ds{x}` `ysiw<em>`
-Plug 'easymotion/vim-easymotion'
+Plug 'phaazon/hop.nvim'
+Plug 'honza/vim-snippets' " snippets for vim, using with coc-snippets
+
+" for writing
+Plug 'junegunn/goyo.vim'
 
 " on demand utilities
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeFocus'] }
@@ -238,12 +242,14 @@ Plug 'mattn/webapi-vim', { 'on': 'Gist' }
 Plug 'mattn/vim-gist', { 'on': 'Gist' }
 
 " language specific
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'luochen1990/rainbow', { 'for': 'clojure' }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'chr4/nginx.vim', {'for': 'nginx'}
 Plug 'fladson/vim-kitty', { 'for': 'kitty' }
+Plug 'Joorem/vim-haproxy', { 'for': 'haproxy' }
 
 " Initialize plugin system
 call plug#end()
@@ -277,33 +283,38 @@ let g:lightline = {
 let g:rainbow_active = 1
 
 " ===
-" === easymotion
+" === Hop
 " ===
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" lua config
+lua << EOF
+require'hop'.setup()
+EOF
+" mapping
+map <LEADER>hf :HopChar1<CR>
+map <LEADER>hs :HopChar2<CR>
+map <LEADER>hh :HopWord<CR>
+map <LEADER>hl :HopLine<CR>
+map <LEADER>hj :HopLineBC<CR>
+map <lEADER>hk :HopLineAC<CR>
 
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-nmap <LEADER>s <Plug>(easymotion-overwin-f)
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-nmap <LEADER>vv <Plug>(easymotion-overwin-f2)
+" ===
+" === markdown-preview.nvim
+" ===
+nmap <LEADER>p <Plug>MarkdownPreviewToggle
 
-" Turn on case-insensitive feature
-let g:EasyMotion_smartcase = 1
-
-" JK motions: Line motions
-map <LEADER>j <Plug>(easymotion-j)
-map <lEADER>k <Plug>(easymotion-k)
+" ===
+" === goyo.vim
+" ===
+nmap <LEADER>y :Goyo<CR>
 
 " ===
 " === NERDTree
 " ===
 nnoremap <LEADER>tt :NERDTreeToggle<CR>
 " locate current file
-nnoremap <LEADER>ll :NERDTreeFind<CR>
+nnoremap <LEADER>tl :NERDTreeFind<CR>
 " locate nerdtree
-nnoremap <LEADER>lf :NERDTreeFocus<CR>
+nnoremap <LEADER>tf :NERDTreeFocus<CR>
 
 " ===
 " === floaterm
